@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Mis Tablas 🌟 - ¡Bienvenido a la Aventura!</title>
+  
+  <link rel="icon" type="image/svg+xml" href="Sistema/IMAGEN/star.svg">
+  <link rel="stylesheet" href="Sistema/CSS/style.css">
+
+  <style>
+    /* Estilos específicos de la pantalla de bienvenida / Ingreso */
+    .login-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+      background: radial-gradient(circle at 50% 20%, #FFF3D6 0%, #E0F2FE 60%, #F5E8FE 100%);
+    }
+
+    .login-container {
+      max-width: 680px;
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: var(--border-radius-lg);
+      padding: 2.5rem 2rem;
+      border: 4px solid #FFEAA7;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .login-logo {
+      max-width: 280px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .login-welcome-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .login-welcome-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
+    /* Tarjeta de bienvenida a usuario previo */
+    .returning-user-box {
+      background: #FFF9E6;
+      border: 2px dashed #FFA502;
+      border-radius: var(--border-radius-md);
+      padding: 1.2rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .returning-user-left {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .returning-avatar-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid #FF9F43;
+    }
+
+    /* Formulario */
+    .login-form-group {
+      text-align: left;
+      margin-bottom: 1.8rem;
+    }
+
+    .login-label {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+    }
+
+    .input-name-wrap {
+      position: relative;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 1rem 1.2rem 1rem 3.2rem;
+      font-size: 1.25rem;
+      font-family: var(--font-family);
+      font-weight: 700;
+      border: 3px solid #EDF2F7;
+      border-radius: var(--border-radius-md);
+      color: var(--text-main);
+      background: #FAFAFA;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .login-input:focus {
+      background: #FFFFFF;
+      border-color: #0984E3;
+      box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.15);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+    }
+
+    /* Selección de los 5 Avatares */
+    .avatars-selection-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .avatar-option-card {
+      background: #FAFAFA;
+      border: 3px solid #EDF2F7;
+      border-radius: var(--border-radius-md);
+      padding: 0.8rem 0.4rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .avatar-option-card:hover {
+      transform: translateY(-5px);
+      border-color: #74B9FF;
+      background: #F1F9FF;
+    }
+
+    .avatar-option-card.selected {
+      border-color: #FF6B6B;
+      background: #FFF5F5;
+      box-shadow: 0 8px 18px rgba(255, 107, 107, 0.3);
+      transform: scale(1.06);
+    }
+
+    .avatar-option-img {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 0.4rem auto;
+      display: block;
+    }
+
+    .avatar-option-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .avatar-option-trait {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .avatar-check-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #1DD1A1;
+      color: #FFFFFF;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      font-size: 0.75rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .avatar-option-card.selected .avatar-check-badge {
+      display: flex;
+    }
+
+    /* Alerta de Validación Amigable */
+    .validation-alert {
+      display: none;
+      background: #FFEAA7;
+      color: #D35400;
+      padding: 0.8rem 1rem;
+      border-radius: var(--border-radius-md);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid #E17055;
+      text-align: left;
+      animation: shake 0.4s ease;
+    }
+
+    /* Adaptación móvil del formulario */
+    @media (max-width: 600px) {
+      .login-container {
+        padding: 1.8rem 1.2rem;
+      }
+      .login-welcome-title {
+        font-size: 1.5rem;
+      }
+      .avatars-selection-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .avatar-option-card:nth-child(4), .avatar-option-card:nth-child(5) {
+        grid-column: span 1;
+      }
+      .returning-user-box {
+        flex-direction: column;
+        text-align: center;
+      }
+      .returning-user-left {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body class="login-body">
+
+  <div class="login-container">
+    <!-- Logotipo y Nombre de la Plataforma -->
+    <img src="Sistema/IMAGEN/logo.svg" alt="Mis Tablas" class="login-logo">
+    <h1 class="login-welcome-title">¡Plataforma Educativa "Mis Tablas"!</h1>
+    <p class="login-welcome-desc">Aprende, practica y desafía las tablas de multiplicar del 2 al 10 para 4° Básico.</p>
+
+    <!-- Banner si ya existe una partida previa -->
+    <div id="returning-user-container" style="display: none;"></div>
+
+    <!-- Alerta de Validación Dinámica -->
+    <div id="validation-alert" class="validation-alert"></div>
+
+    <!-- Formulario de Ingreso -->
+    <form id="login-form" onsubmit="handleLoginSubmit(event)">
+      
+      <!-- Campo Nombre -->
+      <div class="login-form-group">
+        <label for="student-name-input" class="login-label">
+          1. Escribe tu nombre o apodo:
+        </label>
+        <div class="input-name-wrap">
+          <span class="input-icon">✏️</span>
+          <input 
+            type="text" 
+            id="student-name-input" 
+            class="login-input" 
+            placeholder="Ej: Juliana Gallardo..." 
+            maxlength="25" 
+            autocomplete="off"
+            required>
+        </div>
+      </div>
+
+      <!-- Selección de Avatar (Exactamente 5 avatares) -->
+      <div class="login-form-group">
+        <label class="login-label">
+          2. Elige a tu compañero de aventura (5 avatares):
+        </label>
+        <div class="avatars-selection-grid">
+          
+          <!-- Avatar 1: Leo -->
+          <div class="avatar-option-card selected" data-avatar="avatar1" onclick="selectAvatar('avatar1', this)">
+            <div class="avatar-check-badge">✓</div>
+            <img src="Sistema/IMAGEN/avatar1.svg" alt="Leo" class="avatar-option-img">
+            <div class="avatar-option-name">Leo</div>
+            <div class="avatar-option-trait">El Aventurero 🦁</div>
+          </div>
+
+          <!-- Avatar 2: Foxy -->
+          <div class="avatar-option-card" data-avatar="avatar2" onclick="selectAvatar('avatar2', this)">
+            <div class="avatar-check-badge">✓</div>
+            <img src="Sistema/IMAGEN/avatar2.svg" alt="Foxy" class="avatar-option-img">
+            <div class="avatar-option-name">Foxy</div>
+            <div class="avatar-option-trait">La Curiosa 🦊</div>
+          </div>
+
+          <!-- Avatar 3: Pandita -->
+          <div class="avatar-option-card" data-avatar="avatar3" onclick="selectAvatar('avatar3', this)">
+            <div class="avatar-check-badge">✓</div>
+            <img src="Sistema/IMAGEN/avatar3.svg" alt="Pandita" class="avatar-option-img">
+            <div class="avatar-option-name">Pandita</div>
+            <div class="avatar-option-trait">El Genio 🐼</div>
+          </div>
+
+          <!-- Avatar 4: Buhito -->
+          <div class="avatar-option-card" data-avatar="avatar4" onclick="selectAvatar('avatar4', this)">
+            <div class="avatar-check-badge">✓</div>
+            <img src="Sistema/IMAGEN/avatar4.svg" alt="Buhito" class="avatar-option-img">
+            <div class="avatar-option-name">Buhito</div>
+            <div class="avatar-option-trait">El Sabio 🦉</div>
+          </div>
+
+          <!-- Avatar 5: Astro -->
+          <div class="avatar-option-card" data-avatar="avatar5" onclick="selectAvatar('avatar5', this)">
+            <div class="avatar-check-badge">✓</div>
+            <img src="Sistema/IMAGEN/avatar5.svg" alt="Astro" class="avatar-option-img">
+            <div class="avatar-option-name">Astro</div>
+            <div class="avatar-option-trait">Espacial 🚀</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botón de Ingreso Principal -->
+      <button type="submit" class="btn btn-primary btn-xl btn-block" style="margin-top: 1rem;">
+        ¡A Jugar y Aprender! 🚀
+      </button>
+
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="Sistema/JS/audio.js"></script>
+  <script src="Sistema/JS/storage.js"></script>
+  <script>
+    let selectedAvatarId = 'avatar1';
+
+    // Al cargar la página verificar si ya hay partida guardada
+    window.addEventListener('DOMContentLoaded', () => {
+      const existingUser = storage.getUser();
+      if (existingUser && existingUser.name) {
+        const container = document.getElementById('returning-user-container');
+        container.style.display = 'block';
+        container.innerHTML = `
+          <div class="returning-user-box">
+            <div class="returning-user-left">
+              <img src="Sistema/IMAGEN/${existingUser.avatar}.svg" alt="Avatar" class="returning-avatar-thumb">
+              <div>
+                <strong style="color: #2F3542; font-size: 1.1rem;">¡Hola de nuevo, ${existingUser.name}!</strong>
+                <div style="font-size: 0.9rem; color: #57606F;">Tienes ⭐ ${existingUser.stars} estrellas acumuladas.</div>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="btn btn-success btn-sm" onclick="continueExistingSession()">
+                Continuar Partida ➡
+              </button>
+            </div>
+          </div>
+        `;
+
+        // Prellenar nombre
+        const nameInput = document.getElementById('student-name-input');
+        if (nameInput) nameInput.value = existingUser.name;
+        // Preseleccionar avatar
+        if (existingUser.avatar) {
+          const card = document.querySelector(`.avatar-option-card[data-avatar="${existingUser.avatar}"]`);
+          if (card) selectAvatar(existingUser.avatar, card, false);
+        }
+      }
+    });
+
+    function selectAvatar(avatarId, cardEl, playSound = true) {
+      if (playSound) sounds.playPop();
+      selectedAvatarId = avatarId;
+      document.querySelectorAll('.avatar-option-card').forEach(c => c.classList.remove('selected'));
+      cardEl.classList.add('selected');
+    }
+
+    function continueExistingSession() {
+      sounds.playCorrect();
+      setTimeout(() => {
+        window.location.href = 'Sistema/index.html';
+      }, 300);
+    }
+
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('student-name-input');
+      const alertBox = document.getElementById('validation-alert');
+      const name = nameInput.value.trim();
+
+      // Validación 1: Nombre vacío o muy corto
+      if (!name || name.length < 2) {
+        sounds.playWrong();
+        alertBox.style.display = 'block';
+        alertBox.innerHTML = '⚠️ <strong>¡Ups!</strong> Por favor escribe tu nombre (al menos 2 letras) para poder identificarte.';
+        nameInput.focus();
+        return;
+      }
+
+      // Validación 2: Avatar seleccionado
+      if (!selectedAvatarId) {
+        sounds.playWrong();
+        alertBox.style.display = 'block';
+        alertBox.innerHTML = '⚠️ <strong>¡Elige tu avatar!</strong> Selecciona uno de los 5 personajes para que te acompañe.';
+        return;
+      }
+
+      // Todo correcto: Si ya existía el usuario con el mismo nombre y avatar, lo preservamos o actualizamos
+      const existingUser = storage.getUser();
+      if (existingUser && existingUser.name.toLowerCase() === name.toLowerCase()) {
+        existingUser.avatar = selectedAvatarId;
+        storage.save();
+      } else {
+        // Nuevo usuario
+        storage.createUser(name, selectedAvatarId);
+      }
+
+      sounds.playFanfare();
+      alertBox.style.display = 'none';
+
+      // Redirigir a Sistema/index.html
+      setTimeout(() => {
+        window.location.href = 'Sistema/index.html';
+      }, 400);
+    }
+  </script>
+</body>
+</html>

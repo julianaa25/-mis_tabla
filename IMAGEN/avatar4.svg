@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgOwl" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8EAFF"/>
+      <stop offset="100%" stop-color="#C7CEEA"/>
+    </radialGradient>
+    <linearGradient id="owlBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6C5CE7"/>
+      <stop offset="100%" stop-color="#4834D4"/>
+    </linearGradient>
+    <filter id="shadowOwl" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="92" fill="url(#bgOwl)" stroke="#6C5CE7" stroke-width="4" filter="url(#shadowOwl)"/>
+
+  <!-- Owl Tuft Ears -->
+  <path d="M50,80 L40,42 L72,64 Z" fill="#4834D4"/>
+  <path d="M150,80 L160,42 L128,64 Z" fill="#4834D4"/>
+
+  <!-- Owl Body -->
+  <ellipse cx="100" cy="116" rx="58" ry="52" fill="url(#owlBody)"/>
+
+  <!-- Tummy -->
+  <ellipse cx="100" cy="132" rx="38" ry="32" fill="#D6A2E8" opacity="0.85"/>
+  <!-- Tummy scallops -->
+  <path d="M85,124 Q92,120 100,124 Q107,120 115,124" stroke="#6C5CE7" stroke-width="2.5" fill="none"/>
+  <path d="M80,136 Q90,132 100,136 Q110,132 120,136" stroke="#6C5CE7" stroke-width="2.5" fill="none"/>
+  <path d="M88,148 Q94,144 100,148 Q106,144 112,148" stroke="#6C5CE7" stroke-width="2.5" fill="none"/>
+
+  <!-- Big Owl Eyes Outer Rings -->
+  <circle cx="74" cy="98" r="22" fill="#FFFFFF"/>
+  <circle cx="126" cy="98" r="22" fill="#FFFFFF"/>
+
+  <!-- Iris -->
+  <circle cx="74" cy="98" r="14" fill="#FDCB6E"/>
+  <circle cx="126" cy="98" r="14" fill="#FDCB6E"/>
+
+  <!-- Pupils -->
+  <circle cx="74" cy="98" r="9" fill="#2D3436"/>
+  <circle cx="126" cy="98" r="9" fill="#2D3436"/>
+
+  <!-- Eye Highlights -->
+  <circle cx="71" cy="94" r="3.5" fill="#FFFFFF"/>
+  <circle cx="76" cy="100" r="1.5" fill="#FFFFFF"/>
+  <circle cx="123" cy="94" r="3.5" fill="#FFFFFF"/>
+  <circle cx="128" cy="100" r="1.5" fill="#FFFFFF"/>
+
+  <!-- Cute Beak -->
+  <polygon points="100,116 93,103 107,103" fill="#E17055"/>
+
+  <!-- Cute Cheeks -->
+  <circle cx="56" cy="118" r="8" fill="#FD79A8" opacity="0.6"/>
+  <circle cx="144" cy="118" r="8" fill="#FD79A8" opacity="0.6"/>
+
+  <!-- Graduation Cap -->
+  <polygon points="100,38 145,52 100,64 55,52" fill="#2D3436"/>
+  <polygon points="100,38 140,51 100,62 60,51" fill="#3A3D40"/>
+  <rect x="80" y="61" width="40" height="9" fill="#2D3436" rx="2"/>
+  <!-- Golden Tassel -->
+  <circle cx="100" cy="51" r="3" fill="#F1C40F"/>
+  <path d="M100,51 Q128,52 135,66" stroke="#F1C40F" stroke-width="2.5" fill="none"/>
+  <ellipse cx="136" cy="72" rx="3" ry="6" fill="#F1C40F"/>
+</svg>

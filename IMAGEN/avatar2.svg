@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgFox" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFECD2"/>
+      <stop offset="100%" stop-color="#FCB69F"/>
+    </radialGradient>
+    <linearGradient id="furOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF793F"/>
+      <stop offset="100%" stop-color="#CD6133"/>
+    </linearGradient>
+    <filter id="shadowFox" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="92" fill="url(#bgFox)" stroke="#FF793F" stroke-width="4" filter="url(#shadowFox)"/>
+
+  <!-- Left Ear -->
+  <path d="M48,82 L40,24 L86,58 Z" fill="url(#furOrange)"/>
+  <path d="M52,74 L48,36 L78,60 Z" fill="#FFEAA7"/>
+
+  <!-- Right Ear -->
+  <path d="M152,82 L160,24 L114,58 Z" fill="url(#furOrange)"/>
+  <path d="M148,74 L152,36 L122,60 Z" fill="#FFEAA7"/>
+
+  <!-- Fox Head / Base -->
+  <ellipse cx="100" cy="115" rx="60" ry="48" fill="url(#furOrange)"/>
+  
+  <!-- Fluffy Cheeks & Muzzle (White mask) -->
+  <path d="M42,112 C40,140 70,165 100,165 C130,165 160,140 158,112 C158,95 130,120 100,120 C70,120 42,95 42,112 Z" fill="#FFFFFF"/>
+
+  <!-- Cute Pink Cheeks -->
+  <circle cx="62" cy="126" r="10" fill="#FF7675" opacity="0.6"/>
+  <circle cx="138" cy="126" r="10" fill="#FF7675" opacity="0.6"/>
+
+  <!-- Cute Little Nose -->
+  <ellipse cx="100" cy="136" rx="7" ry="5" fill="#2D3436"/>
+
+  <!-- Mouth -->
+  <path d="M96,143 Q100,147 104,143" stroke="#2D3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Sparkly Big Eyes -->
+  <ellipse cx="74" cy="102" rx="9" ry="12" fill="#2D3436"/>
+  <ellipse cx="126" cy="102" rx="9" ry="12" fill="#2D3436"/>
+  <!-- Highlights -->
+  <circle cx="71" cy="98" r="3.5" fill="#FFFFFF"/>
+  <circle cx="77" cy="104" r="1.8" fill="#FFFFFF"/>
+  <circle cx="123" cy="98" r="3.5" fill="#FFFFFF"/>
+  <circle cx="129" cy="104" r="1.8" fill="#FFFFFF"/>
+
+  <!-- Cute Star Flower on Ear -->
+  <g transform="translate(136, 60)">
+    <circle cx="0" cy="-6" r="5" fill="#FD79A8"/>
+    <circle cx="6" cy="0" r="5" fill="#FD79A8"/>
+    <circle cx="0" cy="6" r="5" fill="#FD79A8"/>
+    <circle cx="-6" cy="0" r="5" fill="#FD79A8"/>
+    <circle cx="0" cy="0" r="4" fill="#FEEAA7"/>
+  </g>
+</svg>
